@@ -1,0 +1,46 @@
+import time
+import random
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+def generate_random_array(size):
+    return [random.randint(1, 1000) for _ in range(size)]
+
+def measure_time_complexity(sorting_algorithm, array_size):
+    arr = generate_random_array(array_size)
+    start_time = time.time()
+    sorting_algorithm(arr)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"Time complexity for {sorting_algorithm.__name__} with {array_size} elements: {execution_time}")
+
+array_sizes = [100, 1000, 10000]
+sorting_algorithms = [bubble_sort, selection_sort, insertion_sort]
+
+for sorting_algorithm in sorting_algorithms:
+    for array_size in array_sizes:
+        measure_time_complexity(sorting_algorithm, array_size)
