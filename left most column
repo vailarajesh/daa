@@ -1,0 +1,31 @@
+import sys
+N = 2
+def search(mat, n, m):
+	a = sys.maxsize
+	for i in range (n):
+		low = 0
+		high = m - 1
+		ans = sys.maxsize
+		while (low <= high):
+			mid = (low + high) // 2
+			if (mat[i][mid] == 1):
+				if (mid == 0):
+					ans = 0
+					break				
+				elif (mat[i][mid - 1] == 0):
+					ans = mid
+					break		
+			if (mat[i][mid] == 1):
+				high = mid - 1
+			else:
+				low = mid + 1
+		if (ans < a):
+			a = ans
+	if (a == sys.maxsize):
+		return -1
+	return a + 1
+if __name__ == "__main__":
+
+	mat = [[0, 0 ],
+		[0,0 ]]
+	print(search(mat, 2,2 ))
