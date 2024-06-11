@@ -1,0 +1,7 @@
+array1={1,2,3,4}
+array2={3,8,9}
+for i in array1:
+     if i in array2:
+         print("true")
+else:
+    print("false")
