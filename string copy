@@ -1,0 +1,5 @@
+s1=input("Enter the input string")
+s2=""
+for i in range(s1):
+    s2+=s2+i
+print("copied string:",s2)
