@@ -1,0 +1,10 @@
+arr=[1,2,3,4,5]
+even=[]
+odd=[]
+for i in arr:
+    if i%2==0:
+       even.append(i)
+    else:
+        odd.append(i)
+print("even array:",even)
+print("odd array:",odd)
